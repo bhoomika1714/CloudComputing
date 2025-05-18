@@ -2,7 +2,7 @@
 
 ### **1. Briefly explain the roles of Puppet, Chef, and Ansible in DevOps practices**
 
-From your presentation:
+
 
 * **Puppet, Chef, and Ansible** are key tools used in the **Infrastructure as Code (IaC)** paradigm. IaC allows the infrastructure to be provisioned and managed through code instead of manual processes.
 
