@@ -1,119 +1,117 @@
 
 
-### **1. Challenges in Scaling a Server within a Cloud Environment**
+### **1. A software development company is modernizing its legacy system by migrating to a cloud environment. They are exploring scaling and serverless computing. What challenges might they face in scaling a server within a cloud environment?**
 
+From the slide **"Scaling A Server In A Cloud Environment"**:
 
-#### **Types of Scaling and Their Challenges**:
+**Challenges they might face:**
 
-* **Vertical Scaling (Scale Up)**:
+* **Vertical Scaling Limitations:**
 
-  * Involves adding more resources (CPU, RAM, storage) to a single server.
-  * **Challenges**:
+  * While increasing CPU, RAM, or storage (scale-up) can help, it **eventually hits hardware and cost limitations**.
+  * Suitable only for applications that require more resources per server but not always cost-effective.
 
-    * Has **physical limits**—you can only scale a machine so far.
-    * **Downtime** may be required to add resources.
-    * **Not cost-effective** for highly variable workloads.
+* **Horizontal Scaling Complexity:**
 
-* **Horizontal Scaling (Scale Out)**:
+  * Adding more servers (scale-out) introduces **complexities like load balancing**, data synchronization, and **consistency across distributed systems**.
+  * Requires proper orchestration to ensure traffic is evenly distributed and services stay fault-tolerant.
 
-  * Involves adding more servers to handle the load.
-  * **Challenges**:
+* **Load Balancer Dependency:**
 
-    * **Complex load balancing**: Requires distributing traffic efficiently.
-    * **Data consistency** and **state synchronization** can be difficult across instances.
-    * **Infrastructure orchestration** is needed to manage multiple servers dynamically.
+  * Correctly configuring and managing **load balancers** is crucial to effective scaling.
+  * Any misconfiguration may cause **uneven traffic distribution**, service unavailability, or degraded performance.
 
-#### **General Challenges in Cloud Scaling**:
+* **Resource Management & Monitoring:**
 
-* Managing **auto-scaling policies**.
-* Handling **cost optimization** while scaling.
-* Ensuring **high availability and fault tolerance**.
-* Dealing with **legacy system dependencies** during migration.
+  * Dynamic workloads require **real-time monitoring and scaling**, which, if not handled properly, can lead to over-provisioning or under-provisioning.
 
 ---
 
-### **2. Concept of Stateless Servers and Their Relationship with Containerization**
+### **2. Describe the concept of stateless servers and their relationship with containerization.**
 
-#### **Stateless Servers**:
+From the slide **"Stateless Servers and Containers"**:
 
-* A **stateless server** does **not store session or user-specific data internally** between requests.
-* All client-related data must be stored externally (e.g., in a database or object storage).
+* **Stateless Servers:**
 
-#### **Why Statelessness Matters**:
+  * A **stateless server** does **not store client-related data internally**.
+  * It treats each client request as **independent**, ensuring better scalability and fault tolerance.
+  * Unlike stateful servers, which maintain session or user data, stateless servers avoid such persistence.
 
-* **Simplifies horizontal scaling**: Any request can go to any server.
-* **Supports failover and high availability**: No dependency on prior requests.
+* **Relation to Containerization:**
 
-#### **Relationship with Containerization**:
-
-* Serverless systems use **containers** to deploy servers quickly and efficiently.
-* Containers are **lightweight**, **portable**, and support **isolation**, making them ideal for ephemeral, stateless server functions.
-* Together, stateless design and containerization enable **rapid scaling** and **automated orchestration**, key traits of serverless infrastructure.
-
----
-
-### **3. Architecture of a Serverless Infrastructure**
-
-#### **Key Components**:
-
-1. **Function-as-a-Service (FaaS)**:
-
-   * Core element that runs code in response to events (e.g., AWS Lambda).
-2. **Event Sources**:
-
-   * Triggers that initiate function execution (e.g., HTTP request, file upload, DB update).
-3. **Event Queue**:
-
-   * Buffers incoming events for processing.
-4. **Dispatcher**:
-
-   * Picks events from the queue and assigns them to worker nodes.
-5. **Worker Nodes**:
-
-   * Containers that execute the serverless functions.
-6. **Backend Services**:
-
-   * Databases, file storage (e.g., Amazon S3), authentication, etc.
-7. **Orchestration Tools**:
-
-   * Manage workflows and sequencing (e.g., AWS Step Functions).
-
-#### **Difference from Traditional Architectures**:
-
-| Traditional Server-Based            | Serverless Architecture                   |
-| ----------------------------------- | ----------------------------------------- |
-| Always-on servers                   | Functions triggered on demand             |
-| Manual provisioning                 | Auto-scaling, no manual server management |
-| Persistent state                    | Stateless execution                       |
-| Higher idle cost                    | Pay-per-use pricing                       |
-| Requires infrastructure maintenance | Abstracted infrastructure (cloud-managed) |
+  * Stateless servers are ideal for **containerized deployments**.
+  * Containers can be **quickly started, stopped, and replicated** without the need to maintain session continuity.
+  * **Serverless systems deploy code in stateless containers**, making it easier to **scale out and orchestrate** across distributed systems.
+  * **Orchestration systems**, like those in Kubernetes, efficiently handle these containers, allowing smooth deployment and management.
 
 ---
 
-### **4. Example: Media Streaming Company Using Serverless for Video Encoding**
+### **3. Explain the architecture of a serverless infrastructure, including its key components and how it differs from traditional server-based architectures.**
 
+From the slide **"The Architecture of a Serverless Infrastructure"**:
 
-#### **Scenario**:
+#### **Key Components of Serverless Architecture:**
 
-* A content provider uploads a video to an **Amazon S3 bucket**.
-* This triggers a **serverless function** to:
+1. **Function-as-a-Service (FaaS):**
 
-  1. Split the video into 5-minute segments.
-  2. Transcode each segment using parallel serverless functions.
-* Final output is stored and served to users.
+   * Executes code in response to **specific events** (e.g., HTTP requests, file uploads).
 
-#### **Advantages**:
+2. **Event Sources:**
 
-* **Scalability**: Automatically scales with the number of segments; handles traffic spikes.
-* **Cost-effective**: You only pay for compute time used during transcoding.
-* **Parallel processing**: Speeds up the encoding process by handling segments concurrently.
-* **No infrastructure management**: Frees the company from maintaining transcoding servers.
+   * Trigger the execution of functions (e.g., changes in database, object storage).
 
-#### **Disadvantages**:
+3. **Backend Services:**
 
-* **Cold start latency**: Initial delay if a function hasn’t run recently.
-* **Execution time limits**: Functions might time out on long transcoding jobs.
-* **Vendor lock-in**: Deep integration with a specific cloud provider’s services (e.g., AWS).
-* **Debugging complexity**: Distributed, event-driven nature makes tracing issues harder.
-* **Resource limitations**: Serverless environments may have limits on memory or disk.
+   * Includes databases, storage, and authentication systems which functions can access.
+
+4. **Orchestration Services:**
+
+   * Coordinate workflows and manage the execution of multiple functions in sequence or parallel.
+
+5. **Dispatcher & Event Queue (as used in Kubernetes-like architecture):**
+
+   * Events are placed into a **queue** and a **dispatcher** assigns worker nodes (containers) to process them.
+
+#### **Differences from Traditional Architectures:**
+
+* **Traditional:**
+
+  * Requires manual **server provisioning, maintenance, and scaling**.
+  * Developers must manage uptime, patches, and resource allocation.
+
+* **Serverless:**
+
+  * **Abstracts infrastructure management**—developers only focus on writing code.
+  * **Auto-scales** on demand with **pay-per-use** billing.
+  * Highly **event-driven and stateless**, enabling faster deployments and updates.
+
+---
+
+### **4. Provide an example of how a media streaming company could leverage serverless processing for video encoding/transcoding. Discuss advantages and disadvantages.**
+
+From the slide **"An Example of Serverless Processing"** (Netflix case):
+
+#### **Example: Netflix using AWS Lambda**
+
+* When a new video is uploaded:
+
+  * Stored in **Amazon S3**, which **triggers an event**.
+  * The event **invokes a serverless function** to split the video into 5-minute segments.
+  * Each segment is placed back in S3, which **triggers additional serverless functions** to transcode those segments.
+  * **Transcoding proceeds in parallel**, increasing efficiency and speed.
+
+#### **Advantages of Serverless in this Use Case:**
+
+* **Cost Efficiency:** Only pay for compute time during encoding/transcoding tasks.
+* **Parallel Processing:** Breaks videos into segments and transcodes them simultaneously, reducing total processing time.
+* **No Server Management:** Developers don’t need to maintain encoding infrastructure.
+* **Automatic Scaling:** Can handle spikes in uploads or user demand without manual intervention.
+
+#### **Disadvantages:**
+
+* **Cold Start Latency:** The first invocation of a function may introduce a delay.
+* **Execution Time Limits:** Serverless functions may not support long-running tasks, requiring careful segmentation.
+* **Vendor Lock-In:** Tied to services like AWS Lambda and S3, making migration complex.
+* **Debugging Complexity:** Distributed event-driven flows are **harder to trace and debug** compared to monolithic applications.
+* **Resource Restrictions:** Limits on memory, CPU, or disk may restrict encoding capabilities for very large or high-quality files.
 
