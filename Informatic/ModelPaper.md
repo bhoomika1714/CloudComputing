@@ -167,9 +167,6 @@ By integrating applications and data in real-time, CAI enhances operational effi
 
 By following these steps, one can effectively establish and troubleshoot connections between Informatica and a database, ensuring smooth data integration processes.
 
----
-
-If you need further clarification or assistance with any of these topics, feel free to ask!
 
 [1]: https://www.informatica.com/solutions/360-engagement.html?utm_source=chatgpt.com "Master Data Management and 360-Degree Views of the Business"
 [2]: https://docs.informatica.com/integration-cloud/application-integration/current-version/design/designing-processes/adding-process-steps.html?utm_source=chatgpt.com "Adding Process Steps - Informatica Documentation"
