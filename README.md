@@ -2,8 +2,6 @@
 
 # **Lab Evaluation Documentation**
 
----
-
 # **📘 Lab Evaluation 2: Virtualization and Containerization Techniques**
 
 ## **1. Objective**
@@ -41,8 +39,8 @@ To understand the fundamentals of virtualization and containerization, and to pr
   ```bash
   docker run -d --name sample-container sample-app
   ```
+<img width="744" height="424" alt="image" src="https://github.com/user-attachments/assets/791be2b8-3a69-41ae-ac23-2fd5c97c2e95" />
 
-📷 *Insert Dockerfile screenshot here.*
 
 ---
 
