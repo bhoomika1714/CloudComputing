@@ -1,9 +1,5 @@
 # CloudComputing
 
-
-
----
-
 # **Lab Evaluation Documentation**
 
 
@@ -146,7 +142,6 @@ To explore Kubernetes fundamentals, understand container orchestration, and depl
   kubectl apply -f deployment.yaml
   ```
 
-📷 *Insert YAML manifest screenshot.*
 
 ---
 
@@ -172,7 +167,6 @@ To explore Kubernetes fundamentals, understand container orchestration, and depl
   kubectl set image deployment/my-app app=new-image:latest
   ```
 
-📷 *Insert kubectl output screenshot.*
 
 ---
 
@@ -214,7 +208,7 @@ Monitoring stack used:
 * **Prometheus** → for scraping and collecting metrics
 * **Grafana** → for visualizing service performance
 
-📷 *Insert architecture diagram here.*
+
 
 ---
 
@@ -316,4 +310,5 @@ docker run -d -p 3000:3000 \
 * Gained practical experience in Docker networks, Prometheus configs, and Grafana dashboards.
 
 ---
+<img width="750" height="426" alt="image" src="https://github.com/user-attachments/assets/c9b8b31d-8d81-485f-92b6-8c0af7385773" />
 
