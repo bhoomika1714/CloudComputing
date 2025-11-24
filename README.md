@@ -2,8 +2,6 @@
 
 # **Lab Evaluation Documentation**
 
-
-
 ---
 
 # **📘 Lab Evaluation 2: Virtualization and Containerization Techniques**
@@ -68,7 +66,8 @@ Used Docker CLI to:
   docker restart container-name
   ```
 
-📷 *Insert container lifecycle screenshot.*
+<img width="756" height="426" alt="image" src="https://github.com/user-attachments/assets/cf858a01-e860-4466-9cdd-d80744960d7e" />
+
 
 ---
 
