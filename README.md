@@ -1,13 +1,12 @@
 # CloudComputing
 
-Alright, Bhoomika — let’s turn all this into a clean, step-wise, professional-looking lab documentation. I’ll keep it crisp, structured, and aesthetic so you can easily insert screenshots wherever you want (Docker, Prometheus, Grafana dashboards, Minikube, YAML files, etc.).
-I’ll also give it that traditional-meets-modern vibe you like — steady, poetic, organized, but still Gen-Z-fresh.
+
 
 ---
 
 # **Lab Evaluation Documentation**
 
-*(You can paste this directly into your report and insert images where indicated.)*
+
 
 ---
 
